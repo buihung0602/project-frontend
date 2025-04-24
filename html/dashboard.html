@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | VocabApp</title>
+
+  <!-- CSS chung -->
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/dashboard.css" />
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">VocabApp</a></li>
+        <li><a href="#">Categories</a></li>
+        <li><a href="#">Vocabulary</a></li>
+        <li><a href="#">Flashcards</a></li>
+        <li><a href="#">Quiz</a></li>
+
+        <!-- chào tên user – JS sẽ gán -->
+        <li style="margin-left:auto;">Hi, <span id="user-name"></span></li>
+        <button class="btn-start" onclick="logout()">Logout</button>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    <h2 class="heading" id="welcome-msg"></h2>
+    <p  class="subtext">Tiếp tục học từ vựng và cải thiện kỹ năng của bạn ngay hôm nay.</p>
+
+    <button class="btn-quiz" onclick="window.location.href='quiz.html'">Làm Quiz</button>
+  </main>
+
+  <footer class="dashboard-footer">
+    © 2024 VocabApp. All rights reserved.
+  </footer>
+
+  <script src="../js/dashboard.js"></script>
+</body>
+</html>

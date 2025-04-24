@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register | VocabApp</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/register.css"/>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="#">VocabApp</a></li>
+            <li style="margin-left:auto;"><a href="login.html" class="btn-start">Login</a></li>
+            <li><a href="register.html" class="btn-create">Register</a></li>
+        </ul>          
+    </nav>
+  </header>
+
+  <main class="main-content" style="width: 100%">
+    <div class="form-container">
+      <h2>Register</h2>
+      <input type="text" id="firstName" placeholder="First Name" />
+    <div class="error" id="err-firstName"></div>
+
+    <input type="text" id="lastName" placeholder="Last Name" />
+    <div class="error" id="err-lastName"></div>
+
+    <input type="email" id="email" placeholder="Email" />
+    <div class="error" id="err-email"></div>
+
+    <input type="password" id="password" placeholder="Password" />
+    <div class="error" id="err-password"></div>
+
+    <input type="password" id="confirmPassword" placeholder="Confirm Password" />
+    <div class="error" id="err-confirmPassword"></div>
+    <button onclick="handleRegister()">Register</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2024 VocabApp. All rights reserved.</p>
+  </footer>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+/* Reset + Layout */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  body {
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-bottom: 3rem; /*Để tránh footer bị dính vào đáy*/
+  }
+  /* Navbar */
+  .navbar {
+    background: #ffffff;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+  }
+  
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+    /* Không căn giữa, để mặc định căn trái */
+  }
+  
+  .nav-links li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 0.95rem;
+    font-weight: 400;
+  }
+  
+  .nav-links li a.active {
+    font-weight: bold;
+    color: #000;
+  }
+  
+  
+  /* Main content */
+  .main-content {
+    text-align: center;
+    padding: 3rem 1rem;
+  }
+    .main-content h1 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        color: #333;
+    }
+    .main-content p {
+        font-size: 1.2rem;
+        color: #555;
+        margin-bottom: 20px;
+    }
+  
+  /* Footer */
+  
+  footer {
+    text-align: center;
+    padding: 1rem;
+    background: white;
+    box-shadow: 0 -1px 6px 1px rgba(0, 0, 0, 0.1);
+    font-size: 0.9rem;
+    color: #777;
+    margin-top: 5px; /* để nó trôi nhẹ lên khỏi đáy */
+  }
+
+  #welcome button{
+    min-width:160px;  /* ép chiều rộng tối thiểu bằng nhau */
+    display:inline-block; /* bảo đảm padding & min‑width hoạt động */
+    text-align:center;
+  }
+ 
+  .btn-start, .btn-create{
+    display:inline-block; /* để padding áp dụng đúng */
+    text-align:center; /* căn giữa */
+    min-width: 110px;        /*  đảm bảo 2 nút rộng bằng nhau  */
+    padding:10px 20px;
+    font-size:15px;
+    font-weight:600;
+    color:#fff !important; /* chữ trắng, !important ngăn ghi đè */
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+  }
+
+  /* màu nền riêng (nếu muốn khác) */
+  .btn-start { background:#007bff; }   /* Xanh dương */
+  .btn-create{ background:#007bff; }   /* Xanh lá  */
+  

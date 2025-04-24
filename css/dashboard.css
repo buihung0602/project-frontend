@@ -1,0 +1,37 @@
+.heading   { 
+    font-size: 1.8rem; 
+    font-weight: 700; 
+    margin: 1.5rem 0 .5rem; }
+.subtext   { 
+    color:#555; 
+    margin-bottom:2rem; 
+  }
+.btn-quiz  {
+    background:#28a745; 
+    color:#fff; border:none; 
+    padding:.6rem 1.5rem;
+    border-radius:5px; 
+    cursor:pointer; }
+    /* tác dụng hover nhỏ */
+.btn-quiz:hover{ 
+    opacity:.9; 
+  }
+
+/* footer cố định đáy – chỉ áp dụng cho trang dashboard */
+.dashboard-footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: white;
+    box-shadow: 0 -1px 6px rgba(0,0,0,.1);
+    text-align: center;
+    padding: 1rem;
+    font-size: .9rem;
+    color: #777;
+  }
+
+  .btn-start{
+    background-color:red;
+  }
+  
