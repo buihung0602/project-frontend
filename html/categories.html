@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vocabulary Categories</title>
+  <link rel="stylesheet" href="../css/categories.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-left"><strong>VocabApp</strong></div>
+    <ul class="nav-links">
+      <li><a href="/html/dashboard.html">Dashboard</a></li>
+      <li><a href="#" class="active">Categories</a></li>
+      <li><a href="#">Vocabulary</a></li>
+      <li><a href="#">Flashcards</a></li>
+      <li><a href="#">Quiz</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="container">
+    <div class="header">
+      <h2>Vocabulary Categories</h2>
+      <button id="addCategoryBtn">Add New Category</button>
+    </div>
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Search categories..."
+      class="search-box"
+    />
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="categoryTableBody">
+          <!-- Dynamic rows -->
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    © 2024 VocabApp. All rights reserved.
+  </footer>
+  <!-- sửa-->
+  <div id="editModal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-btn" id="closeModal">&times;</span>
+      <h2>Edit Category</h2>
+      <label for="editName">Name</label>
+      <input type="text" id="editName" />
+      <label for="editDesc">Description</label>
+      <textarea id="editDesc" rows="4"></textarea>
+      <div class="modal-actions">
+        <button id="cancelEdit" class="cancel-btn">Cancel</button>
+        <button id="saveEdit" class="save-btn">Save</button>
+      </div>
+    </div>
+  </div>
+<!--xóa-->
+  <div id="deleteModal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-btn" id="closeDeleteModal">&times;</span>
+      <h2>Delete Category</h2>
+      <p>Are you sure you want to delete this category?</p>
+      <div class="modal-actions">
+        <button id="cancelDelete" class="cancel-btn">Cancel</button>
+        <button id="confirmDelete" class="delete-btn">Delete</button>
+      </div>
+    </div>
+  </div>  
+  
+  <script src="../js/categories.js"></script>
+</body>
+</html>
