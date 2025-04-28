@@ -46,13 +46,37 @@
         </tbody>
       </table>
     </div>
+    <div id="pagination" class="pagination"></div>
   </main>
 
   <!-- Footer -->
   <footer>
     © 2024 VocabApp. All rights reserved.
   </footer>
-  <!-- sửa-->
+
+  <!-- Modal thêm category mới -->
+  <div id="addModal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-btn" id="closeAddModal">&times;</span>
+      <h2>Add New Category</h2>
+      <form id="addCategoryForm">
+        <div class="form-group">
+          <label for="addName">Name</label>
+          <input type="text" id="addName" required placeholder="Enter category name"/>
+        </div>
+        <div class="form-group">
+          <label for="addDesc">Description</label>
+          <textarea id="addDesc" rows="4" placeholder="Enter category description (optional)"></textarea>
+        </div>
+        <div class="modal-actions">
+          <button type="button" id="cancelAdd" class="cancel-btn">Cancel</button>
+          <button type="submit" class="save-btn">Add Category</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal sửa -->
   <div id="editModal" class="modal hidden">
     <div class="modal-content">
       <span class="close-btn" id="closeModal">&times;</span>
@@ -80,6 +104,30 @@
     </div>
   </div>  
   
+  <!-- Modal hiển thị danh sách từ vựng -->
+  <div id="wordsModal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-btn" id="closeWordsModal">&times;</span>
+      <h2>Words in Category: <span id="categoryName"></span></h2>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Word</th>
+              <th>Meaning</th>
+            </tr>
+          </thead>
+          <tbody id="wordsTableBody">
+            <!-- Dynamic rows -->
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-actions">
+        <button id="closeWordsBtn" class="cancel-btn">Close</button>
+      </div>
+    </div>
+  </div>
+
   <script src="../js/categories.js"></script>
 </body>
 </html>

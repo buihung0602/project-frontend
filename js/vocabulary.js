@@ -29,7 +29,7 @@ let deletingWordId = null;
 
 
 let currentPage = 1;
-const wordsPerPage = 5;
+const wordsPerPage = 3;
 
 // Render từ vựng
 function renderWords() {
@@ -69,8 +69,31 @@ function renderPagination(totalWords) {
     const paginationContainer = document.getElementById("pagination");
     paginationContainer.innerHTML = "";
 
+    if (totalWords === 0) {
+        paginationContainer.style.display = "none";
+        return;
+    } else {
+        paginationContainer.style.display = "flex";
+    }
+
     const totalPages = Math.ceil(totalWords / wordsPerPage);
 
+    // Thêm nút Previous
+    const prevBtn = document.createElement("button");
+    prevBtn.textContent = "Previous";
+    prevBtn.className = "page-btn";
+    if (currentPage === 1) {
+        prevBtn.disabled = true;
+    }
+    prevBtn.addEventListener("click", function() {
+        if (currentPage > 1) {
+            currentPage--;
+            renderWords();
+        }
+    });
+    paginationContainer.appendChild(prevBtn);
+
+    // Thêm các nút số trang
     for (let i = 1; i <= totalPages; i++) {
         const btn = document.createElement("button");
         btn.textContent = i;
@@ -84,6 +107,21 @@ function renderPagination(totalWords) {
         });
         paginationContainer.appendChild(btn);
     }
+
+    // Thêm nút Next
+    const nextBtn = document.createElement("button");
+    nextBtn.textContent = "Next";
+    nextBtn.className = "page-btn";
+    if (currentPage === totalPages) {
+        nextBtn.disabled = true;
+    }
+    nextBtn.addEventListener("click", function() {
+        if (currentPage < totalPages) {
+            currentPage++;
+            renderWords();
+        }
+    });
+    paginationContainer.appendChild(nextBtn);
 }
 
 
@@ -114,8 +152,8 @@ function openAddModal() {
     modalTitle.textContent = "Add New Word";
     wordInput.value = "";
     meaningInput.value = "";
+    renderCategoryOptions();
     categoryInput.value = "";
-
     wordModal.style.display = "flex";
 }
 
@@ -128,9 +166,21 @@ function editWord(id) {
     modalTitle.textContent = "Edit Word";
     wordInput.value = wordObj.word;
     meaningInput.value = wordObj.meaning;
+    renderCategoryOptions();
     categoryInput.value = wordObj.category;
-
     wordModal.style.display = "flex";
+}
+
+function renderCategoryOptions() {
+    // Lấy danh sách category từ localStorage
+    const categories = JSON.parse(localStorage.getItem('categories')) || [];
+    categoryInput.innerHTML = '<option value="">Select Category</option>';
+    categories.forEach(cat => {
+        const option = document.createElement('option');
+        option.value = cat.name;
+        option.textContent = cat.name;
+        categoryInput.appendChild(option);
+    });
 }
 
 // Save Word
