@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vocabulary Words</title>
+    <link rel="stylesheet" href="../css/vocabulary.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-left">
+          <span class="logo">VocabApp</span>
+        </div>
+        <div class="navbar-right">
+          <a href="./dashboard.html">Dashboard</a>
+          <a href="./categories.html">Categories</a>
+          <a href="./vocabulary.html" class="active">Vocabulary</a>
+          <a href="#">Flashcards</a>
+          <a href="#">Quiz</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="vocabulary-header">
+            <h2>Vocabulary Words</h2>
+            <button class="add-btn" id="addWordBtn">Add New Word</button>
+        </div>
+
+        <div class="filters">
+            <select id="categoryFilter">
+                <option value="all">All Categories</option>
+            </select>
+            <input type="text" id="searchInput" placeholder="Search vocabulary...">
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Word</th>
+                        <th>Meaning</th>
+                        <th>Category</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="vocabTableBody">
+                    <!-- Vocabulary rows sẽ render ở đây -->
+                </tbody>
+            </table>
+        </div>
+
+        <div id="pagination" class="pagination"></div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 VocabApp. All rights reserved.</p>
+    </footer>
+
+    <!-- Modals -->
+    <!-- Add/Edit Word Modal -->
+    <div class="modal" id="wordModal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeModal">&times;</span>
+            <h3 id="modalTitle">Add New Word</h3>
+            <form id="wordForm">
+                <label for="wordInput">Word</label>
+                <input type="text" id="wordInput" placeholder="Enter word..." required>
+
+                <label for="meaningInput">Meaning</label>
+                <textarea id="meaningInput" placeholder="Enter meaning..." required></textarea>
+
+                <label for="categoryInput">Category</label>
+                <input type="text" id="categoryInput" placeholder="Enter category..." required>
+
+                <div class="modal-actions">
+                    <button type="button" class="cancel-btn" id="cancelModal">Cancel</button>
+                    <button type="submit" class="save-btn">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Delete Confirm Modal -->
+    <div class="modal" id="deleteModal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeDeleteModal">&times;</span>
+            <h3>Delete Word</h3>
+            <p>Are you sure you want to delete this word?</p>
+            <div class="modal-actions">
+                <button class="cancel-btn" id="cancelDeleteBtn">Cancel</button>
+                <button class="delete-btn" id="confirmDeleteBtn">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/vocabulary.js"></script>
+</body>
+</html>
