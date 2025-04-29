@@ -14,5 +14,5 @@ function logout() {
   
     localStorage.removeItem('currentUser');  // xoá phiên
     window.location.href = '../html/login.html';  // quay lại trang đăng nhập
-  }
+}
   
