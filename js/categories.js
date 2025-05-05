@@ -88,16 +88,12 @@ function renderCategories(data) {
         prevBtn.textContent = "Previous";
         prevBtn.className = "page-btn";
         if (currentPage === 1) prevBtn.disabled = true;
-<<<<<<< HEAD
         prevBtn.onclick = () => { 
             if (currentPage > 1) {
                 currentPage--;
                 renderCategories(data);
             }
         };
-=======
-        prevBtn.onclick = () => { if (currentPage > 1) { currentPage--; renderCategories(data); } };
->>>>>>> f76e6f8715d8ab4697bc65c3a8b0b1a5dbe54dbe
         paginationContainer.appendChild(prevBtn);
         // Số trang
         for (let i = 1; i <= totalPages; i++) {
@@ -113,16 +109,12 @@ function renderCategories(data) {
         nextBtn.textContent = "Next";
         nextBtn.className = "page-btn";
         if (currentPage === totalPages) nextBtn.disabled = true;
-<<<<<<< HEAD
         nextBtn.onclick = () => { 
             if (currentPage < totalPages) {
                 currentPage++;
                 renderCategories(data);
             }
         };
-=======
-        nextBtn.onclick = () => { if (currentPage < totalPages) { currentPage++; renderCategories(data); } };
->>>>>>> f76e6f8715d8ab4697bc65c3a8b0b1a5dbe54dbe
         paginationContainer.appendChild(nextBtn);
     }
 }

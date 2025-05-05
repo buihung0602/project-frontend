@@ -197,6 +197,7 @@ function saveWord(e) {
     }
 
     if (editingWordId) {
+        // Edit existing word
         const wordObj = words.find(w => w.id === editingWordId);
         if (wordObj) {
             wordObj.word = word;
@@ -204,6 +205,7 @@ function saveWord(e) {
             wordObj.category = category;
         }
     } else {
+        // Add new word
         const newWord = {
             id: Date.now(),
             word,
@@ -213,8 +215,10 @@ function saveWord(e) {
         words.push(newWord);
     }
 
-    localStorage.setItem('words', JSON.stringify(words)); // <-- lưu dữ liệu
+    // Save to localStorage
+    localStorage.setItem('words', JSON.stringify(words));
 
+    // Close modal and refresh display
     closeModals();
     renderWords();
     updateCategoryFilter();
@@ -256,14 +260,10 @@ cancelDeleteBtn.addEventListener("click", closeModals);
 confirmDeleteBtn.addEventListener("click", deleteWord);
 
 categoryFilter.addEventListener("change", renderWords);
-<<<<<<< HEAD
 searchInput.addEventListener("input", function() {
     currentPage = 1; // Reset về trang 1 khi tìm kiếm
     renderWords();
 });
-=======
-searchInput.addEventListener("input", renderWords);
->>>>>>> f76e6f8715d8ab4697bc65c3a8b0b1a5dbe54dbe
 
 // Load dữ liệu ban đầu
 renderWords();

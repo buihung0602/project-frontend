@@ -1,0 +1,221 @@
+body {
+    background: #f5f6fa;
+}
+
+.main-content {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 32px 0 0 0;
+}
+
+h2 {
+    text-align: left !important;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 18px;
+    margin-left: 0;
+}
+
+.flashcard-controls {
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+#categorySelect {
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: none;
+    background: #f0f1f3;
+    font-size: 1.1rem;
+    outline: none;
+}
+
+#startFlashcardBtn {
+    background: #4285f4;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 32px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    margin: 0 auto 24px auto;
+    display: block;
+    transition: background 0.2s;
+}
+#startFlashcardBtn:hover {
+    background: #357ae8;
+}
+
+.flashcard-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.flashcard {
+    width: 500px;
+    height: 260px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: #222;
+    transition: box-shadow 0.2s;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+}
+
+.flashcard-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flashcard-front, .flashcard-back {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #222;
+    backface-visibility: hidden;
+    border-radius: 16px;
+}
+
+.flashcard-back {
+    position: absolute;
+    top: 0; left: 0;
+    background: #fff;
+    transform: rotateY(180deg);
+}
+
+.flashcard-nav {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin-bottom: 18px;
+}
+
+.flashcard-nav button {
+    padding: 10px 28px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+#prevBtn, #nextBtn {
+    background: #4285f4;
+    color: #fff;
+}
+#prevBtn:disabled, #nextBtn:disabled {
+    background: #bcd2fa;
+    color: #fff;
+    cursor: not-allowed;
+}
+#markLearnedBtn {
+    background: #27c36a;
+    color: #fff;
+}
+
+.progress-bar {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 18px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+#progressText {
+    font-size: 1rem;
+    color: #444;
+    margin-bottom: 2px;
+}
+.progress {
+    width: 100%;
+    height: 8px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+.progress-filled {
+    height: 100%;
+    background: #4285f4;
+    transition: width 0.3s;
+}
+
+h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 32px 0 12px 0;
+    color: #222;
+}
+
+.word-list-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    overflow: hidden;
+}
+.word-list-table th, .word-list-table td {
+    padding: 16px 0;
+    text-align: center;
+    color: #888;
+    font-size: 1rem;
+}
+.word-list-table th {
+    background: #f5f6fa;
+    color: #888;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+.word-list-table tr {
+    border-bottom: 1px solid #f0f0f0;
+}
+.word-list-table tr:last-child {
+    border-bottom: none;
+}
+
+@media (max-width: 700px) {
+    .flashcard {
+        width: 95vw;
+        min-width: 0;
+        font-size: 1.2rem;
+    }
+    .main-content {
+        padding: 8px 0 0 0;
+    }
+    .progress-bar {
+        max-width: 95vw;
+    }
+}
+
+.navbar {
+    display: none !important;
+}
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    background: #fff;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.04);
+    z-index: 100;
+}

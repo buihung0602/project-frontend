@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flashcard Learning</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/flashcard.css">
+</head>
+<body>
+    <main class="main-content">
+        <h2>Flashcard Learning</h2>
+        <div class="flashcard-controls">
+            <select id="categorySelect">
+                <option value="all">All Categories</option>
+            </select>
+        </div>
+        <div class="flashcard-container">
+            <div class="flashcard" id="flashcard">
+                <div class="flashcard-inner" id="flashcardInner">
+                    <div class="flashcard-front" id="flashcardFront">No words available</div>
+                    <div class="flashcard-back" id="flashcardBack"></div>
+                </div>
+            </div>
+        </div>
+        <div class="flashcard-nav">
+            <button id="prevBtn">Previous</button>
+            <button id="markLearnedBtn">Mark as Learned</button>
+            <button id="nextBtn">Next</button>
+        </div>
+        <div class="progress-bar">
+            <span id="progressText">0/0</span>
+            <div class="progress">
+                <div class="progress-filled" id="progressFilled" style="width:0%"></div>
+            </div>
+        </div>
+        <h3>Word List</h3>
+        <table class="word-list-table">
+            <thead>
+                <tr>
+                    <th>Word</th>
+                    <th>Meaning</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="wordListBody">
+                <!-- Dữ liệu từ vựng sẽ render ở đây -->
+            </tbody>
+        </table>
+    </main>
+    <footer class="footer">
+        <p>© 2024 VocabApp. All rights reserved.</p>
+    </footer>
+    <script src="../js/flashcard.js"></script>
+    <script src="../js/auth.js"></script>
+</body>
+</html>

@@ -15,8 +15,8 @@
           <a href="./dashboard.html">Dashboard</a>
           <a href="./categories.html">Categories</a>
           <a href="./vocabulary.html" class="active">Vocabulary</a>
-          <a href="#">Flashcards</a>
-          <a href="#">Quiz</a>
+          <a href="./flashcard.html">Flashcards</a>
+          <a href="./quiz.html">Quiz</a>
         </div>
     </nav>
 
@@ -97,6 +97,13 @@
         </div>
     </div>
 
+    <script src="../js/auth.js"></script>
     <script src="../js/vocabulary.js"></script>
+    <script>
+        // Kiểm tra đăng nhập khi trang được tải
+        if (!checkAuth()) {
+            // Nếu chưa đăng nhập, checkAuth() sẽ tự chuyển hướng về trang login
+        }
+    </script>
 </body>
 </html>
