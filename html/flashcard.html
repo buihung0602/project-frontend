@@ -1,56 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Flashcard Learning</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/flashcard.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flashcard Learning</title>
+  <link rel="stylesheet" href="../css/flashcard.css">
 </head>
 <body>
-    <main class="main-content">
-        <h2>Flashcard Learning</h2>
-        <div class="flashcard-controls">
-            <select id="categorySelect">
-                <option value="all">All Categories</option>
-            </select>
+  <div class="fc-container">
+    <div class="fc-header">
+      <div class="fc-title">Flashcard Learning</div>
+    </div>
+    <div class="fc-category-row">
+      <select class="fc-category" id="categorySelect">
+        <option value="all">All Categories</option>
+        <option value="animal">Con vật</option>
+        <option value="fruit">Trái cây</option>
+      </select>
+    </div>
+    <div class="fc-flashcard-area">
+      <div class="flashcard" id="flashcard">
+        <div class="flashcard-inner">
+          <div class="flashcard-front" id="flashcardFront">No words available</div>
+          <div class="flashcard-back" id="flashcardBack"></div>
         </div>
-        <div class="flashcard-container">
-            <div class="flashcard" id="flashcard">
-                <div class="flashcard-inner" id="flashcardInner">
-                    <div class="flashcard-front" id="flashcardFront">No words available</div>
-                    <div class="flashcard-back" id="flashcardBack"></div>
-                </div>
-            </div>
-        </div>
-        <div class="flashcard-nav">
-            <button id="prevBtn">Previous</button>
-            <button id="markLearnedBtn">Mark as Learned</button>
-            <button id="nextBtn">Next</button>
-        </div>
-        <div class="progress-bar">
-            <span id="progressText">0/0</span>
-            <div class="progress">
-                <div class="progress-filled" id="progressFilled" style="width:0%"></div>
-            </div>
-        </div>
-        <h3>Word List</h3>
-        <table class="word-list-table">
-            <thead>
-                <tr>
-                    <th>Word</th>
-                    <th>Meaning</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody id="wordListBody">
-                <!-- Dữ liệu từ vựng sẽ render ở đây -->
-            </tbody>
-        </table>
-    </main>
-    <footer class="footer">
-        <p>© 2024 VocabApp. All rights reserved.</p>
-    </footer>
-    <script src="../js/flashcard.js"></script>
-    <script src="../js/auth.js"></script>
+      </div>
+      <div class="fc-btn-group">
+        <button class="fc-btn fc-btn-prev" id="btnPrev">Previous</button>
+        <button class="fc-btn fc-btn-learned" id="btnLearned">Mark as Learned</button>
+        <button class="fc-btn fc-btn-next" id="btnNext">Next</button>
+      </div>
+      <div class="fc-progress-label"><span id="progressText">0/0</span></div>
+      <div class="fc-progress"><div class="fc-progress-bar" id="progressBar" style="width: 0%"></div></div>
+    </div>
+    <div class="fc-wordlist-area">
+      <div class="fc-wordlist-title">Word List</div>
+      <table class="fc-wordlist-table">
+        <thead>
+          <tr>
+            <th>WORD</th>
+            <th>MEANING</th>
+            <th>STATUS</th>
+          </tr>
+        </thead>
+        <tbody id="wordListBody">
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <footer>
+    <p>© 2024 VocabApp. All rights reserved.</p>
+  </footer>
+  <script src="../js/flashcard.js"></script>
+  <script>
+    // Demo data
+    const data = {
+      animal: [
+        { word: 'Cat', meaning: 'mèo', learned: false },
+        { word: 'Dog', meaning: 'cún', learned: false }
+      ],
+      fruit: [
+        { word: 'Apple', meaning: 'táo', learned: false },
+        { word: 'Banana', meaning: 'chuối', learned: false }
+      ]
+    };
+    let currentCategory = 'all';
+    let currentList = [];
+    let currentIndex = 0;
+
+    const categorySelect = document.getElementById('categorySelect');
+    const flashcard = document.getElementById('flashcard');
+    const front = document.getElementById('flashcardFront');
+    const back = document.getElementById('flashcardBack');
+    const btnPrev = document.getElementById('btnPrev');
+    const btnNext = document.getElementById('btnNext');
+    const btnLearned = document.getElementById('btnLearned');
+    const progressText = document.getElementById('progressText');
+    const progressBar = document.getElementById('progressBar');
+    const wordListBody = document.getElementById('wordListBody');
+
+    function getAllWords() {
+      return Object.values(data).flat();
+    }
+
+    function updateCurrentList() {
+      if (currentCategory === 'all') {
+        currentList = getAllWords();
+      } else {
+        currentList = data[currentCategory] || [];
+      }
+      currentIndex = 0;
+    }
+
+    function renderFlashcard() {
+      if (currentList.length === 0) {
+        front.textContent = 'No words available';
+        back.textContent = '';
+        btnPrev.disabled = true;
+        btnNext.disabled = true;
+        btnLearned.disabled = true;
+        return;
+      }
+      const wordObj = currentList[currentIndex];
+      front.textContent = wordObj.word;
+      back.textContent = wordObj.meaning;
+      btnPrev.disabled = currentIndex === 0;
+      btnNext.disabled = currentIndex === currentList.length - 1;
+      btnLearned.disabled = wordObj.learned;
+      flashcard.classList.remove('flipped');
+    }
+
+    function renderProgress() {
+      const total = currentList.length;
+      const learnedCount = currentList.filter(w => w.learned).length;
+      progressText.textContent = `${learnedCount}/${total}`;
+      progressBar.style.width = total ? `${(learnedCount / total) * 100}%` : '0%';
+    }
+
+    function renderWordList() {
+      let list = currentList;
+      if (currentCategory === 'all') list = getAllWords();
+      wordListBody.innerHTML = list.map(w =>
+        `<tr>
+          <td>${w.word}</td>
+          <td>${w.meaning}</td>
+          <td class="${w.learned ? 'fc-status-learned' : 'fc-status-notlearned'}">${w.learned ? 'Learned' : 'Not Learned'}</td>
+        </tr>`
+      ).join('');
+    }
+
+    function renderAll() {
+      renderFlashcard();
+      renderProgress();
+      renderWordList();
+    }
+
+    categorySelect.onchange = function() {
+      currentCategory = categorySelect.value;
+      updateCurrentList();
+      renderAll();
+    };
+
+    btnPrev.onclick = function() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        renderFlashcard();
+      }
+    };
+    btnNext.onclick = function() {
+      if (currentIndex < currentList.length - 1) {
+        currentIndex++;
+        renderFlashcard();
+      }
+    };
+    btnLearned.onclick = function() {
+      if (currentList.length > 0) {
+        currentList[currentIndex].learned = true;
+        renderAll();
+      }
+    };
+    flashcard.onclick = function() {
+      if (currentList.length > 0) {
+        flashcard.classList.toggle('flipped');
+      }
+    };
+
+    // Init
+    updateCurrentList();
+    renderAll();
+  </script>
 </body>
 </html>

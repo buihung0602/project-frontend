@@ -1,56 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Vocabulary Quiz</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/quiz.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vocabulary Quiz - VocabApp</title>
+  <link rel="stylesheet" href="../css/quiz.css">
 </head>
 <body>
-    <main class="main-content">
-        <h2>Vocabulary Quiz</h2>
-        <div class="quiz-controls">
-            <button id="startQuizBtn" class="start-btn">Start Quiz</button>
-            <select id="quizCategorySelect">
-                <option value="all">All Categories</option>
-            </select>
-        </div>
-        <div class="quiz-progress">
-            <span id="quizProgressText">Progress 0/0</span>
-        </div>
-        <div id="quizArea" class="quiz-area" style="display:none;">
-            <div class="quiz-question" id="quizQuestion"></div>
-            <div class="quiz-options" id="quizOptions"></div>
-            <div class="quiz-nav">
-                <button id="prevQuizBtn">Previous</button>
-                <button id="nextQuizBtn">Next</button>
-            </div>
-        </div>
-        <div id="quizResults" class="quiz-results" style="display:none;">
-            <h3>Quiz Results</h3>
-            <div id="quizScore"></div>
-            <button id="tryAgainBtn">Try Again</button>
-        </div>
-        <div id="quizHistory" class="quiz-history">
-            <h3>Quiz History</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Category</th>
-                        <th>Score</th>
-                    </tr>
-                </thead>
-                <tbody id="quizHistoryBody">
-                    <!-- Quiz history rows -->
-                </tbody>
-            </table>
-        </div>
-    </main>
-    <footer class="footer">
-        <p>© 2024 VocabApp. All rights reserved.</p>
-    </footer>
-    <script src="../js/quiz.js"></script>
-    <script src="../js/auth.js"></script>
+  <div class="quiz-container">
+    <div class="quiz-header">
+      <span class="quiz-title">Vocabulary Quiz</span>
+      <button class="btn-start-quiz" id="startQuizBtn">Start Quiz</button>
+    </div>
+    <div class="quiz-category-row">
+      <select class="quiz-category" id="quizCategoryFilter">
+        <option value="">All Categories</option>
+        <option value="animal">Con vật</option>
+        <option value="fruit">Trái cây</option>
+      </select>
+    </div>
+    <div class="quiz-progress-label" id="quizProgressLabel">Progress</div>
+    <div class="quiz-progress-bar-bg">
+      <div class="quiz-progress-bar" id="quizProgressBar" style="width: 0%"></div>
+    </div>
+    <div class="quiz-box" id="quizBox" style="display:none;">
+      <div class="quiz-question" id="quizQuestion"></div>
+      <div id="quizOptions"></div>
+      <div class="quiz-btn-row">
+        <button class="quiz-btn quiz-btn-prev" id="prevQuizBtn">Previous</button>
+        <button class="quiz-btn quiz-btn-next" id="nextQuizBtn">Next</button>
+      </div>
+    </div>
+    <div class="quiz-result-box" id="quizResultBox" style="display:none;">
+      <div class="quiz-result" id="quizResult"></div>
+      <button class="quiz-btn quiz-btn-retry" id="tryAgainBtn">Try Again</button>
+    </div>
+    <div class="quiz-history-area">
+      <div class="quiz-history-title">Quiz History</div>
+      <table class="quiz-history-table">
+        <thead>
+          <tr>
+            <th>DATE</th>
+            <th>CATEGORY</th>
+            <th>SCORE</th>
+          </tr>
+        </thead>
+        <tbody id="quizHistoryTable">
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <footer class="quiz-footer">
+    <p>© 2024 VocabApp. All rights reserved.</p>
+  </footer>
+  <script src="../js/quizz.js"></script>
 </body>
-</html> 
+</html>
